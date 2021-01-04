@@ -185,6 +185,13 @@ void menu_info_thermistors() {
     STATIC_ITEM(TERN(WATCH_BED, MSG_INFO_RUNAWAY_ON, MSG_INFO_RUNAWAY_OFF), SS_LEFT);
   #endif
 
+  #if HAS_TEMP_PROBE
+    #undef THERMISTOR_ID
+    #define THERMISTOR_ID TEMP_SENSOR_PROBE
+    #include "../thermistornames.h"
+    STATIC_ITEM_P(PSTR("PROBE: " THERMISTOR_NAME), SS_INVERT);
+  #endif
+
   #if HAS_HEATED_CHAMBER
     #undef THERMISTOR_ID
     #define THERMISTOR_ID TEMP_SENSOR_CHAMBER
