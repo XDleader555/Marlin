@@ -1029,7 +1029,7 @@
  */
 #define Z_CLEARANCE_DEPLOY_PROBE    5 // Z Clearance for Deploy/Stow
 #define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
-#define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
+#define Z_CLEARANCE_MULTI_PROBE     3 // Z Clearance between multiple probes
 //#define Z_AFTER_PROBING           5 // Z position after probing is done
 
 #define Z_PROBE_LOW_POINT          0 // Farthest distance below the trigger-point to go before stopping
@@ -1363,7 +1363,7 @@
  * Commands to execute at the start of G29 probing.
  * Useful to heat up the extruder or wipe before probing.
  */
-#define Z_PROBE_START_SCRIPT "M109 R180\nG12 P0 S12 T0\nG1 Z5"
+#define Z_PROBE_START_SCRIPT "M109 R180\nG12"
 
 /**
  * Commands to execute at the end of G29 probing.
@@ -1609,7 +1609,7 @@
   //#define NOZZLE_CLEAN_NO_Y
 
   // Explicit wipe G-code script applies to a G12 with no arguments.
-  //#define WIPE_SEQUENCE_COMMANDS "G1 X-17 Y25 Z10 F4000\nG1 Z1\nM114\nG1 X-17 Y25\nG1 X-17 Y95\nG1 X-17 Y25\nG1 X-17 Y95\nG1 X-17 Y25\nG1 X-17 Y95\nG1 X-17 Y25\nG1 X-17 Y95\nG1 X-17 Y25\nG1 X-17 Y95\nG1 X-17 Y25\nG1 X-17 Y95\nG1 Z15\nM400\nG0 X-10.0 Y-9.0"
+  #define WIPE_SEQUENCE_COMMANDS "G1 X-15 Y100 F3000\nG1 Z1\nG1 X-17 Y95 F1000\nG1 X-17 Y90 F1000\nG1 X-17 Y85 F1000\nG1 X-15 Y90 F1000\nG1 X-17 Y80 F1000\nG1 X-15 Y95 F1000\nG1 X-17 Y75 F2000\nG1 X-15 Y65 F2000\nG1 X-17 Y70 F2000\nG1 X-15 Y60 F2000\nG1 X-17 Y55 F2000\nG1 X-15 Y50 F2000\nG1 X-17 Y40 F2000\nG1 X-15 Y45 F2000\nG1 X-17 Y35 F2000\nG1 X-15 Y40 F2000\nG1 X-17 Y70 F2000\nG1 X-15 Y30 Z2 F2000\nG1 X-17 Y35 F2000\nG1 X-15 Y25 F2000\nG1 X-17 Y30 F2000\nG1 X-15 Y25 Z1.5 F1000\nG1 X-17 Y23 F1000\nG1 X-15 Y18 F2000\nG1 Z10"
 
 #endif
 
