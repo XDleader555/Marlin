@@ -1360,6 +1360,12 @@
 #endif
 
 /**
+ * Commands to execute at the start of G29 probing.
+ * Useful to heat up the extruder or wipe before probing.
+ */
+//#define Z_PROBE_START_SCRIPT "M109 R180\nG12 P0 S12 T0\nG1 Z5"
+
+/**
  * Commands to execute at the end of G29 probing.
  * Useful to retract or move the Z probe out of the way.
  */

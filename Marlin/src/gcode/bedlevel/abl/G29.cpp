@@ -406,6 +406,13 @@ G29_TYPE GcodeSuite::G29() {
     // Be formal so G29 can be done successively without G28.
     if (!no_action) set_bed_leveling_enabled(false);
 
+    // Run custom start script if necessary
+    #ifdef Z_PROBE_START_SCRIPT
+      if (DEBUGGING(LEVELING)) DEBUG_ECHOLNPAIR("Z Probe Start Script: ", Z_PROBE_START_SCRIPT);
+      planner.synchronize();
+      process_subcommands_now_P(PSTR(Z_PROBE_START_SCRIPT));
+    #endif
+
     // Deploy certain probes before starting probing
     #if HAS_BED_PROBE
       if (ENABLED(BLTOUCH))
