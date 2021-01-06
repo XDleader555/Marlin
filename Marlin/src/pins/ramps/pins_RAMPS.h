@@ -169,6 +169,9 @@
 #ifndef TEMP_BED_PIN
   #define TEMP_BED_PIN                        14  // Analog Input
 #endif
+#ifndef TEMP_PROBE_PIN
+  #define TEMP_PROBE_PIN              TEMP_1_PIN  // Analog Input
+#endif
 
 //
 // SPI for Max6675 or Max31855 Thermocouple
