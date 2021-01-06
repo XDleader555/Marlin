@@ -474,7 +474,7 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#define E0_AUTO_FAN_PIN FAN1_PIN
+#define E0_AUTO_FAN_PIN 58
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -573,7 +573,7 @@
 //
 // For Z set the number of stepper drivers
 //
-#define NUM_Z_STEPPER_DRIVERS 2   // (1-4) Z options change based on how many
+#define NUM_Z_STEPPER_DRIVERS 1   // (1-4) Z options change based on how many
 
 #if NUM_Z_STEPPER_DRIVERS > 1
   //#define Z_MULTI_ENDSTOPS
@@ -653,7 +653,7 @@
 
 #define SENSORLESS_BACKOFF_MM  { 2, 2 }     // (mm) Backoff from endstops before sensorless homing
 
-#define HOMING_BUMP_MM      { 0, 0, 2 }       // (mm) Backoff from endstops after first bump
+#define HOMING_BUMP_MM      { 5, 5, 2 }       // (mm) Backoff from endstops after first bump
 #define HOMING_BUMP_DIVISOR { 2, 2, 4 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 
 #define HOMING_BACKOFF_POST_MM { -X_MIN_POS, -Y_MIN_POS, 5}  // (mm) Backoff from endstops after homing  // {1}
@@ -1094,7 +1094,7 @@
    * LED Control Menu
    * Add LED Control to the LCD menu
    */
-  #define LED_CONTROL_MENU
+  //#define LED_CONTROL_MENU
   #if ENABLED(LED_CONTROL_MENU)
     #define LED_COLOR_PRESETS                 // Enable the Preset Color menu option
     //#define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
@@ -1626,7 +1626,7 @@
 
   //#define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
 
-  //#define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
+  #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
     //#define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
@@ -1739,10 +1739,10 @@
   // Note: this values cannot be calibrated and have to be set manually
   #if ENABLED(PROBE_TEMP_COMPENSATION)
     // Park position to wait for probe cooldown
-    #define PTC_PARK_POS   { 10, 10, 100 }
+    #define PTC_PARK_POS   { 20, 20, 100 }
 
     // Probe position to probe and wait for probe to reach target temperature
-    #define PTC_PROBE_POS  { 10, 10 }
+    #define PTC_PROBE_POS  { 20, 20 }
 
     // Enable additional compensation using hotend temperature
     // Note: this values cannot be calibrated automatically but have to be set manually
@@ -1751,15 +1751,15 @@
     // Probe temperature calibration generates a table of values starting at PTC_SAMPLE_START
     // (e.g. 30), in steps of PTC_SAMPLE_RES (e.g. 5) with PTC_SAMPLE_COUNT (e.g. 10) samples.
 
-    #define PTC_SAMPLE_START  35.0f // Thermistor on probe reads 5°C higher
+    #define PTC_SAMPLE_START  30.0f // Thermistor on probe reads 5°C higher
     #define PTC_SAMPLE_RES    2.5f
-    #define PTC_SAMPLE_COUNT  6U    // 35C + 5C * 5 = 50C
+    #define PTC_SAMPLE_COUNT  6U    // 30C + 5C * 5 = 45C
 
     // Bed temperature calibration builds a similar table.
 
-    #define BTC_SAMPLE_START  45.0f
+    #define BTC_SAMPLE_START  50.0f
     #define BTC_SAMPLE_RES    5.0f
-    #define BTC_SAMPLE_COUNT  9U    // 45C + 5C * 9 = 90C
+    #define BTC_SAMPLE_COUNT  10U    // 45C + 5C * 10 = 100C
 
     // The temperature the probe should be at while taking measurements during bed temperature
     // calibration.
@@ -1891,7 +1891,7 @@
 #if BOTH(SDSUPPORT, DIRECT_STEPPING)
   #define BLOCK_BUFFER_SIZE  8
 #elif ENABLED(SDSUPPORT)
-  #define BLOCK_BUFFER_SIZE 64
+  #define BLOCK_BUFFER_SIZE 32
 #else
   #define BLOCK_BUFFER_SIZE 16
 #endif
